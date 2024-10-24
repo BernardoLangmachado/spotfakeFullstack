@@ -3,6 +3,35 @@ import { View, Text, StyleSheet, Image, Button, ScrollView, Pressable } from "re
 
 import { Link } from "expo-router";
 
+const {formData,setFormData} = useState({
+    nome:'',
+    sombrenome:'',
+    email:'',
+    password:'',
+    datenascimento:'',
+});
+
+cosnt [showPassword, setShowPassword] = useState(false);
+const [Menssage, setMenssage] = useState(null);
+
+const confere = async () => {
+    if(!formData.name || !formData.sombrenome || !formData.email || !formData.password || !formData.datenascimento) {
+        setMenssage('Todos os Campos devem ser preenchidos')
+        return;
+    }
+    try {
+            cosnt response = await fetch('http://localhost:8000/registro',{
+                method: 'POST',
+                headers: {
+                    Accpet: 'aplication/json',
+                    'Content-Type': 'aplication/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+    }
+}
+
 
 const styles = StyleSheet.create({
 
