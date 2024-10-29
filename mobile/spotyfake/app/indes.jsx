@@ -17,19 +17,7 @@ const [Menssage, setMenssage] = useState(null);
 const confere = async () => {
     if(!formData.name || !formData.sombrenome || !formData.email || !formData.password || !formData.datenascimento) {
         setMenssage('Todos os Campos devem ser preenchidos')
-        return;
-    }
-    try {
-            cosnt response = await fetch('http://localhost:8000/registro',{
-                method: 'POST',
-                headers: {
-                    Accpet: 'aplication/json',
-                    'Content-Type': 'aplication/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-    }
+      }
 }
 
 
