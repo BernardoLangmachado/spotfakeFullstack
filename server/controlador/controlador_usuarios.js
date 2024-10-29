@@ -1,0 +1,1 @@
+const contarUser = await User.findAll( {where: {email:email}})
