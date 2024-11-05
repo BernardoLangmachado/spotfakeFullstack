@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: 24,
         marginBottom: 20,
-        textAlign: 'center',
+        textAlign: 'center',    
 
     },
 
