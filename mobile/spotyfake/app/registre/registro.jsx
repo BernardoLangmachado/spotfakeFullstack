@@ -3,13 +3,6 @@ import { View, Text, StyleSheet, Image, Button, ScrollView, Pressable, TextInput
 
 import { Link } from "expo-router";
 
-const { formData, setFormData } = useState({
-    nome: '',
-    sombrenome: '',
-    email: '',
-    password: '',
-    datenascimento: '',
-});
 
 const styles = StyleSheet.create({
     container: {
