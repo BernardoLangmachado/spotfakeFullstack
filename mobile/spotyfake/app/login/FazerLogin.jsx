@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { View, Text, StyleSheet, Image, Button, ScrollView, Pressable, TextInput } from "react-native"
+import { View, Text, StyleSheet, Image, Button, ScrollView, Pressable, TextInput,TouchableOpacity } from "react-native"
 
 import { Link } from "expo-router";
 
@@ -18,20 +18,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#f0f0f0',
         borderRadius: 20,
-        padding: 20, 
+        padding: 20,
     },
 
     titulo: {
         fontSize: 24,
-        marginBottom: 36, 
-        textAlign: 'center', 
+        marginBottom: 36,
+        textAlign: 'center',
     },
 
     buttonsContainer: {
         flexDirection: 'row', // faz ficar na vertical
         justifyContent: 'space-between',
         width: '70%',
-        marginTop: 20, 
+        marginTop: 20,
     },
 
     botaoderegistro: {
@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        height: 40, 
-        borderColor: '#ccc', 
-        borderWidth: 1, 
-        borderRadius: 5, 
-        marginBottom: 38, 
+        height: 40,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 5,
+        marginBottom: 38,
         paddingHorizontal: 10, // isso aqui aumneta o espaaço do textinput
-        width: '100%', 
+        width: '100%',
     },
 
     textbt: {
@@ -62,22 +62,25 @@ const styles = StyleSheet.create({
 export default registrar = () => {
     const [email, onChangeEmail] = React.useState();
     const [password, onChangeSenha] = React.useState();
-   
+
 
     const confere = async () => {
-        if( !email || !password) {
+        if (!email || !password) {
             setMenssage('Todos os Campos devem ser preenchidos')
-          }
-    
-        const respota = await fetch (
-            "http://localhost:8000/autenticacao/login", {method:'post', headers:{'Accept': 'application /json',
-            'Content-Type': 'application/json'}, 
-            body: JSON.stringify({ emaile:email, password: password }) 
+        }
+
+        const respota = await fetch(
+            "http://localhost:8000/autenticacao/login", {
+            method: 'post', headers: {
+                'Accept': 'application /json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ emaile: email, password: password })
         }
         )
         console.log(respota)
     }
-    
+
 
     return (
 
@@ -89,26 +92,26 @@ export default registrar = () => {
 
                 <TextInput
                     style={styles.input}
-                    onChangeText={(text) => {onChangeEmail(text)}}
+                    onChangeText={(text) => { onChangeEmail(text) }}
                     value={email}
                     placeholder="Escreva seu Email"
                 />
 
                 <TextInput
                     style={styles.input}
-                    onChangeText={(text) => {onChangeSenha(text)}}
+                    onChangeText={(text) => { onChangeSenha(text) }}
                     value={password}
                     placeholder="Escreva seu Senha"
                 />
 
-                <Pressable style={styles.botaoderegistro} onPress={confere} >
-                    <Text style={styles.textbt}>Entrar</Text>
-                </Pressable>
+                <Link href="home/homemusic" asChild>
+                    <TouchableOpacity style={styles.botaoderegistro}>
+                        <Text style={styles.textbt}>entrar</Text>
+                    </TouchableOpacity>
+                </Link>
 
             </View>
         </View>
-
-
 
     );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, Image, Modal, Pressable, TouchableOpacity, Button } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from "react";
+import { Link } from "expo-router";
 
 
 
@@ -22,12 +23,14 @@ export default profile = () => {
         if (!result.canceled) {
             setImage(result.assets[0].uri);
         }
-    }
-  
-    const pegarsenha = async () => {
-        fetch
+
+
     }
 
+    // const handlePickImage = () => { // Função que executa o 'pickImage'
+
+    //     console.log("Imagem escolhida"); // Aqui chama 'pickImage' direto.
+    // }
     const handleSendImage = async () => {
         try {
             const data = {
@@ -55,34 +58,27 @@ export default profile = () => {
         <View style={style.container}>
 
             <View style={style.quadrado}>
-                <View style={style.partadafoto}>
 
-                    <Text style={style.titulo}>Seu Perfil</Text>
-                    {/* isso aqui é um view pra subir as coisa no condrado, ta tudo subindo, literalemnete tudo
-                     que t adentro da viwe "quadrado" ta subinddo , pra colocar pra baixo usa o margintop */}
-                    <Pressable onPress={() => pickImage()}>
-                        <Image style={style.fotoeu} source={{ uri: image }} />
-                    </Pressable>
+                <View style={style.header}>
+
+
+                    <View style={style.partadafoto}>
+                        <Link href="profile/inde" asChild>
+                            <Image style={style.fotoeu} source={{ uri: image }} />
+                        </Link>
+                    </View>
+
+
+                    <Text style={style.textperfil}>Seu perfil</Text>
+
                 </View>
-
-                <TouchableOpacity style={style.botaomudar} onPress={}>
-                    <Text style={style.textbtsenha}>Mudar Senha</Text>
-                </TouchableOpacity>
 
                 <View style={style.plalists}>
 
-                    <Text style={style.tituloquadrado}>Suas Playlists</Text>
+                    <Text style={style.tituloquadrado}>Musicas</Text>
 
                     <View style={style.playlist1}>
                         <Text style={style.texetplaylists}>Metal Musisc</Text>
-                    </View>
-
-                    <View style={style.playlist2}>
-                        <Text>Clasicas Musisc</Text>
-                    </View>
-
-                    <View style={style.playlist3}>
-                        <Text>Br Musisc</Text>
                     </View>
 
                 </View>
@@ -102,13 +98,28 @@ const style = StyleSheet.create({
     },
 
     quadrado: {
-        width: 420,
-        height: 720,
+        width: '32%',
+        height: '100%',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#751d15',
         borderRadius: 20,
         padding: 20,
+
+    },
+
+    header: {
+        flex: 1,
+        width: '100%',
+        height: '20%',
+        backgroundColor: '#c52723',
+        borderRadius: 15,
+        padding: 10,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignContent: 'center',
+        //flexWrap: 'wrap',
 
     },
 
@@ -117,42 +128,31 @@ const style = StyleSheet.create({
         alignItems: 'flex-start'
     },
 
-    titulo: {
-        fontSize: 28,
-        marginBottom: 20,
-        textAlign: 'center',
-
-    },
 
     fotoeu: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
+        width: 140,
+        height: 140,
+        borderRadius: 70,
         marginBottom: 20,
     },
 
-    botaomudar: {
-        backgroundColor: '#cd2724',
-        borderRadius: 20,
-        height: 54,
-        width: 120,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
-    textbtsenha: {
-        fontSize: 15,
-        textAlign: 'center',
-        color:'#fffefe' ,
+    textperfil: {
+        fontSize: 24,
+        marginBottom: 20,
     },
 
     plalists: {
         flex: 1,
-        width: 322,
-        height: 386,
-        backgroundColor: '#c4c4c4',
+        width: '100%',
+        height: '6%',
+        justifyContent: 'space-between',
+        backgroundColor: '#c52723',
         borderRadius: 15,
         padding: 17,
+        flexDirection: 'row',
+        alignContent: 'flex-start',
+        flexWrap: 'wrap',
+        marginTop: '5%'
     },
 
     tituloquadrado: {
@@ -168,36 +168,15 @@ const style = StyleSheet.create({
     },
 
     playlist1: {
-        width: '50%',
-        height: '14%',
+        width: 122,
+        height: 66,
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: '#be1e09',
         borderRadius: 10,
         padding: 20,
         marginBottom: 4,
-    },
 
-    playlist2: {
-        width: '50%',
-        height: '14%',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#be1e09',
-        borderRadius: 10,
-        padding: 20,
-        marginBottom: 4,
-    },
-
-    playlist3: {
-        width: '50%',
-        height: '14%',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#be1e09',
-        borderRadius: 10,
-        padding: 20,
-        marginBottom: 4,
     },
 
 },
