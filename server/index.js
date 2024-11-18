@@ -10,5 +10,5 @@ app.use(cors())
 
 // criarTabelas()
 app.use('/autenticacao', rotas)
-app.user('/usuario', rotasUser)
+app.use('/usuario', rotasUser)
 app.listen(8000)

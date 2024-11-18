@@ -5,6 +5,7 @@ import { useState } from "react";
 
 
 
+
 export default profile = () => {
     const [image, setImage] = useState('https://static.vecteezy.com/ti/fotos-gratis/t1/11215319-planeta-terra-com-nascer-do-sol-no-espaco-foto.jpg')
     const [modalVisible, setModalVisible] = useState(false);
@@ -65,7 +66,7 @@ export default profile = () => {
                     </Pressable>
                 </View>
 
-                <TouchableOpacity style={style.botaomudar} onPress={}>
+                <TouchableOpacity style={style.botaomudar} onPress={trocaSenha}>
                     <Text style={style.textbtsenha}>Mudar Senha</Text>
                 </TouchableOpacity>
 

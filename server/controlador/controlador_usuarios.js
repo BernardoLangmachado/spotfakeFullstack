@@ -15,7 +15,7 @@ const update = async (req, res) => {
         data.senha = await bcrypt.hash(data.senha, salt);
     }
 
-    const atualizeusaer = await User.update(
+    const atualizeUser = await User.update(
         data,
         {where: {id: id,}},
             );
@@ -29,7 +29,7 @@ const pegaperfil = async (req, res) => {
                      where: {id: id},
                     attributes: {exclude: ['senha']},});
                 
-            if(!Usurio){
+            if(!Usario){
                 return res.status(400).send({"erro": "User n existe",});
             }
     
@@ -37,4 +37,15 @@ const pegaperfil = async (req, res) => {
                 "status": "foi","data": Usuario});
 }
 
-export {pegaperfil, update}
+const trocaSenha = async (req, res) => {
+    const info = req.body;
+    const receba = await User.findOne({ where: {email: info.email} });
+    if (!receba) {
+        return res.send('este Usuario nao existe')
+    }
+    const senhacrypt = bcryptjs.hashSync(info.senha, 10)
+    const atualiza = await User.update({ senha: senhacrypt}, {where: {email: info.email}})
+    res.send('Atualizou')
+}
+
+export {pegaperfil, update, trocaSenha}
