@@ -122,6 +122,6 @@ const criarTabelas = () => {
     sequelize.sync({ alter: true }).then(() => {
         console.log('tabela criada')
     })
-};
+}
 
 export { User, sequelize, criarTabelas, Artista, Album, Musica };
