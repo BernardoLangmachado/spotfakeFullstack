@@ -1,15 +1,8 @@
 import React, { useState } from "react"
-import { View, Text, StyleSheet, Image, Button, ScrollView, Pressable, TextInput } from "react-native"
+import { View, Text, StyleSheet, Image, Button, ScrollView, Pressable, TextInput, TouchableOpacity } from "react-native"
 
 import { Link } from "expo-router";
 
-const { formData, setFormData } = useState({
-    nome: '',
-    sombrenome: '',
-    email: '',
-    password: '',
-    datenascimento: '',
-});
 
 const styles = StyleSheet.create({
     container: {
@@ -32,7 +25,7 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: 24,
         marginBottom: 20,
-        textAlign: 'center',    
+        textAlign: 'center',
 
     },
 
@@ -80,23 +73,23 @@ export default registrar = () => {
             setMenssage('Todos os Campos devem ser preenchidos')
         }
         try {
-        const respota = await fetch(
-            "http://localhost:8000/autenticacao/login", {
-            method: 'post', headers: {
-                'Accept': 'application /json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email, nome: nome, sombrenome: sombrenome, password: password, dataNasciment: dataNascimento
-            })
+            const respota = await fetch(
+                "http://localhost:8000/autenticacao/login", {
+                method: 'post', headers: {
+                    'Accept': 'application /json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email, nome: nome, sombrenome: sombrenome, password: password, dataNasciment: dataNascimento
+                })
+            }
+            )
+            console.log(respota)
         }
-        )
-        console.log(respota)
-    }
-        catch(e) {
+        catch (e) {
             console.log(e)
         }
-        
+
     }
 
     return (
@@ -105,7 +98,7 @@ export default registrar = () => {
 
             <View style={styles.quadrado}>
 
-                <Text style={styles.titulo}> Regsitre-se</Text>
+                <Text style={styles.titulo}> Registre-se</Text>
 
                 <TextInput
                     style={styles.input}
@@ -142,9 +135,11 @@ export default registrar = () => {
                     placeholder="Escreva sua Data de Nascimento"
                 />
 
-                <Pressable style={styles.botaoderegistro} onPress={confere} >
-                    <Text style={styles.textbt}>Registrar</Text>
-                </Pressable>
+                <Link href="login/FazerLogin" asChild>
+                    <TouchableOpacity style={styles.botaoderegistro}>
+                        <Text style={styles.textbt}>resgistrar</Text>
+                    </TouchableOpacity>
+                </Link>
 
             </View>
         </View>
