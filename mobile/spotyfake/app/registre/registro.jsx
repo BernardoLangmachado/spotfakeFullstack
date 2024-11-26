@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     },
 
     quadrado: {
-        width: 320,
-        height: 460,
+        width: '25%',
+        height: '77%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f0f0f0',
@@ -39,14 +39,14 @@ const styles = StyleSheet.create({
     botaoderegistro: {
         backgroundColor: '#720e00',
         borderRadius: 20,
-        height: 54,
-        width: 120,
+        height: '13%',
+        width: '34%',
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     input: {
-        height: 40,
+        height: '16%',
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 5,

@@ -8,7 +8,7 @@ const app = Express()
 app.use(Express.json())
 app.use(cors())
 
-// criarTabelas()
+ criarTabelas()
 app.use('/autenticacao', rotas)
 app.use('/usuario', rotasUser)
 app.listen(8000)

@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     },
 
     quadrado: {
-        width: 320,
-        height: 460,
+        width: '25%',
+        height: '85%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#f0f0f0',
@@ -37,14 +37,14 @@ const styles = StyleSheet.create({
     botaoderegistro: {
         backgroundColor: '#720e00',
         borderRadius: 20,
-        height: 54,
-        width: 120,
+        height: '12%',
+        width: '31%',
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     input: {
-        height: 40,
+        height: '9%',
         borderColor: '#ccc',
         borderWidth: 1,
         borderRadius: 5,
